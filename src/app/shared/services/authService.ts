@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { catchError } from 'rxjs/operators';
 import { iapplicantRegModel } from '../models/iapplicantRegModel';
 import { BaseService } from "./baseService";
 
@@ -39,7 +38,7 @@ export class AuthService extends BaseService {
     return this._httpClient.post<iapplicantRegModel>(`${super.getHostApi()}PortalToken`, body);
   }
 
-
+  //Utilizado para o login da página inicial. Neste método, há os parâmetros passados nas instruções do desafio.
   // public login(dados) {
 
   //   var headers = new Headers()

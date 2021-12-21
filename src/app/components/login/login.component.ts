@@ -10,13 +10,9 @@ import { AuthService } from 'src/app/shared/services/authService';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  @Input() public title: string;
   @Input() public isUserLoggedIn: boolean;
 
-
   public formLogin: FormGroup;
-
 
   constructor(
      private _fb: FormBuilder,
@@ -32,9 +28,10 @@ export class LoginComponent implements OnInit {
   }
 
   public login(){
-    // localStorage.setItem('token', 'pcoFdLUzUYHnEZ7OWRQ8b33ddramMyDsuhFZooVuKW158X2Ba8nXSu6PZoQzcjEq4Tk7OCU80JiCe4-YJCROxIt3AcUhn-qiYgguZbVyVzKL7S6hbdfc0ni9Uyj6kfZtHOWioAjn5ixfLV6d_spGm68_JHFnrNE4hVEutWFPBMpduvos1HHxqNtMW47uGRgH47tRDjsbbk5lOEbkzeAlFM3zny35EKF2mCxgjk49HCMPlT-rlECYqvc2EfhtkeEfJHdAZY0O_waePQarUpwBNg');
+    // localStorage.setItem('token', '');
     this._router.navigate(['./home']);
-
+  }
+    //Inserir este código para utilizar OAuth2 na validação do login, através de token.
     // this._authService.login(this.formLogin.value).subscribe(
     //   (res: any) => {
 
@@ -48,9 +45,7 @@ export class LoginComponent implements OnInit {
     //       console.log(err);
     //   }
     // );
-  }
 
-  }
 
   // public login() {
   //   this._spinner.show();    
@@ -70,4 +65,4 @@ export class LoginComponent implements OnInit {
   //   });
   // }
 
-// }
+}

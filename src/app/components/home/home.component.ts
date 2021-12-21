@@ -1,9 +1,8 @@
-import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { FormGroup, NgForm } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { applicantClassModel } from 'src/app/shared/models/applicantClassModel';
-import { cidadeClassModel, iapplicantRegModel, telefoneClassModel } from 'src/app/shared/models/iapplicantRegModel';
-import { icidadeModel } from 'src/app/shared/models/icidadeModel';
+import { cidadeClassModel, iapplicantRegModel } from 'src/app/shared/models/iapplicantRegModel';
 import { ApiServiceService } from 'src/app/shared/services/api-service.service';
 
 @Component({
@@ -31,10 +30,11 @@ export class HomeComponent implements OnInit {
   public applicantsForm: FormGroup;
   public allApplicants: iapplicantRegModel;
   public allApplicantsGroup: applicantClassModel[] = []
-  // cdCidade: icidadeModel;
+
   public APPLICANTS: Array<applicantClassModel> = new Array;
   public applicants: iapplicantRegModel[];
   // AllStates: istateModel[];
+  // cdCidade: icidadeModel;
 
   allStates: Array<any> = [
     { name: 'Amazonas', cities: ['Manaus', 'Manacapuru', 'Parintins'] },
@@ -49,24 +49,8 @@ export class HomeComponent implements OnInit {
     this.cities = this.allStates.find(con => con.name == state).cities;
   }
 
-
-  
-  page = 2;
-  pageSize = 4;
-  collectionSize = this.APPLICANTS.length;
-
   constructor(public modalService: NgbModal,
-    private apiService: ApiServiceService) {
-    this.refreshApplicants();
-    // this.getPages();
-    
-   }
-   
-   refreshApplicants() {
-    this.applicants = this.APPLICANTS
-      .map((applicant, i) => ({id: i + 1, ...applicant}))
-      .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
-  }
+    private apiService: ApiServiceService) { }
 
   ngOnInit() {
     this.getAllApplicants();
@@ -74,8 +58,7 @@ export class HomeComponent implements OnInit {
   }
 
   public openRegistrationFormModal(content) {
-    this.modalService.open(content, {
-       });
+    this.modalService.open(content, { });
   }
 
   getAllApplicants() {

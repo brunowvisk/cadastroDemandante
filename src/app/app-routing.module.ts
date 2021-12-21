@@ -18,8 +18,3 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-
-    // children: [
-    //   // { path: 'cadastro', component: cadastroComponent },
-    //   { path: 'login', component: LoginComponent }
-    // ]

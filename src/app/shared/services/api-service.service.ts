@@ -3,10 +3,7 @@ import { Injectable } from '@angular/core';
 import { iapplicantRegModel } from '../models/iapplicantRegModel';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
-import { istateModel } from '../models/istateModel';
-import { icidadeModel } from '../models/icidadeModel';
 import { BaseService } from './baseService';
-import { applicantClassModel } from '../models/applicantClassModel';
 
 @Injectable({
   providedIn: 'root'
