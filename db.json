@@ -1,0 +1,112 @@
+{
+  "cadastrarDemandante": [
+    {
+      "id": 1,
+      "nmDemandante": "Curujito Rodriguez",
+      "email": "curu@jito.com.br",
+      "sexo": "M",
+      "cpf": "98765430001",
+      "cdTipoDemandante": 2,
+      "usuario": "5",
+      "cdAtendimento": 463655,
+      "cidadeDTO": {
+        "cdCidade": "27"
+      },
+      "telefones": {
+        "ddd": "61",
+        "telefone": "99990000",
+        "tipoTelefoneDemandante": 5
+      }
+    },
+    {
+      "id": 2,
+      "nmDemandante": "Bruno Rocha",
+      "email": "bruno@dev.com.br",
+      "sexo": "M",
+      "cpf": "00011122233",
+      "cdTipoDemandante": 2,
+      "usuario": "5",
+      "cdAtendimento": 463655,
+      "cidadeDTO": {
+        "cdCidade": "10"
+      },
+      "telefones": {
+        "ddd": "85",
+        "telefone": "44445555",
+        "tipoTelefoneDemandante": 5
+      }
+    },
+    {
+      "id": 3,
+      "nmDemandante": "Maria Silva",
+      "email": "maria@dev.com.br",
+      "sexo": "F",
+      "cpf": "99988877766",
+      "cdTipoDemandante": 2,
+      "usuario": "5",
+      "cdAtendimento": 463655,
+      "cidadeDTO": {
+        "cdCidade": "27"
+      },
+      "telefones": {
+        "ddd": "85",
+        "telefone": "88885555",
+        "tipoTelefoneDemandante": 5
+      }
+    },
+    {
+      "id": 4,
+      "nmDemandante": "João Silva",
+      "email": "joao@dev.com.br",
+      "sexo": "M",
+      "cpf": "77778899",
+      "cdTipoDemandante": 2,
+      "usuario": "5",
+      "cdAtendimento": 463655,
+      "cidadeDTO": {
+        "cdCidade": "10"
+      },
+      "telefones": {
+        "ddd": "85",
+        "telefone": "99887744",
+        "tipoTelefoneDemandante": 5
+      }
+    },
+    {
+      "id": 5,
+      "nmDemandante": "Marcos Silveira",
+      "email": "marcos@dev.com.br",
+      "sexo": "M",
+      "cpf": "88844455522",
+      "cdTipoDemandante": 2,
+      "usuario": "5",
+      "cdAtendimento": 463655,
+      "cidadeDTO": {
+        "cdCidade": "27"
+      },
+      "telefones": {
+        "ddd": "85",
+        "telefone": "55554444",
+        "tipoTelefoneDemandante": 5
+      }
+    },
+    {
+      "id": 6,
+      "nmDemandante": "Marta Oliveira",
+      "email": "marta@dev.com.br",
+      "sexo": "F",
+      "cpf": "22233344455",
+      "cdTipoDemandante": 2,
+      "usuario": "5",
+      "cdAtendimento": 463655,
+      "cidadeDTO": {
+        "cdCidade": "10"
+      },
+      "telefones": {
+        "ddd": "85",
+        "telefone": "66654444",
+        "tipoTelefoneDemandante": 5
+      }
+    }
+  ]
+}

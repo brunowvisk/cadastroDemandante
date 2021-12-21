@@ -1,0 +1,39 @@
+<div class="container" >
+  <div class="row" >
+    <div class="col-sm-6" style="text-align: end; padding-right: 0px">
+    <!-- <div class="card text-white mb-3 mt-3 text-center" 
+    style="max-width: 18rem; background-color:#f1a359"> -->
+      <img class="text-white mb-3 mt-3 text-center" 
+      style="max-width: 18rem;"
+       src="../../../assets/brunowviskBrandLogin.png" height="400px" alt="">
+    </div>
+  <div class="col-sm-6 align-items-center justify-content-center" style="padding-left: 0px;">
+  <div class="card text-white mb-3 mt-3 text-center" 
+  style="max-width: 18rem; background-color:#dfe0e0; ">
+    <div class="card-header" id="card" style="background-color: rgb(48, 48, 48);">
+      <h5> Login </h5>
+    </div>
+    <div class="card-body" id="card">
+      <div class="loginImage">
+      <img src="../../../assets/login.png" width="30%" 
+      class="d-inline-block align-middle" alt="login image">
+      </div>
+      <form [formGroup]="formLogin">
+        <div class="form-row">
+          <label for="exampleInputEmail1" style="color: black; font-weight: bolder;">Usuário</label>
+          <input type="email" class="form-control" id="adminEmail" formControlName="username"
+          aria-describedby="emailHelp" placeholder="Favor informar seu usuário">
+        </div>
+        <div class="form-row mt-2">
+          <label for="exampleInputPassword1" style="color: black; font-weight: bolder;">Senha</label>
+          <input type="password" class="form-control" id="adminPassword" 
+          formControlName="password" placeholder="Password">
+        </div>
+        <button type="submit"(click)="login()" [disabled]="formLogin.invalid" id="button" class="btn btn-dark m-3">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+
+

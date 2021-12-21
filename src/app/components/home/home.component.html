@@ -1,0 +1,173 @@
+<app-navbar [isUserLoggedIn]="true"></app-navbar>
+
+
+<div class="" style="text-align: end;">
+  <button type="button" (click)="openRegistrationFormModal(content)"
+    style="background-color: rgb(48, 48, 48);"
+    class="btn btn-secondary m-5 pull-right">Novo cadastro</button>
+</div>
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Nome</th>
+      <th scope="col">E-mail</th>
+      <th scope="col">Sexo</th>
+      <th scope="col">CPF</th>
+      <th scope="col">Tipo Demandante</th>
+      <th scope="col">Usuário</th>
+      <th scope="col">Atendimento</th>
+      <th scope="col">Cidade</th>
+      <th scope="col">Telefone</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let applicant of allApplicantsGroup">
+      <td>{{ applicant.nmDemandante }}</td>
+      <td>{{ applicant.email}}</td>
+      <td>{{ applicant.sexo }}</td>
+      <td>{{ applicant.cpf }}</td>
+      <td>{{ applicant.cdTipoDemandante }}</td>
+      <td>{{ applicant.usuario }}</td>
+      <td>{{ applicant.cdAtendimento}}</td>
+      <td>{{ applicant?.cidadeDTO?.cdCidade }}</td>
+      <td>({{ applicant.telefones.ddd }}) {{ applicant.telefones.telefone }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="d-flex justify-content-between p-2">
+  <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshApplicants()">
+  </ngb-pagination>
+
+  <select class="custom-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshApplicants()">
+    <option [ngValue]="2">2 items per page</option>
+    <option [ngValue]="4">4 items per page</option>
+    <option [ngValue]="6">6 items per page</option>
+  </select>
+</div>
+
+
+
+<!-- Modal do Formulário de cadastramento de demandantes -->
+
+<ng-template #content let-modal>
+  <div class="container" style="background-color: #dfe0e0; color: black; font-weight: bolder;">
+  <div>
+    <h4 class="modal-title m-3" >CADASTRO DE DEMANDANTES</h4>
+  </div>
+  <div class="modal-body" >
+    <form class="needs-validation" id="add-form" 
+    (ngSubmit)="f.form.valid && saveApplicants(f)" #f="ngForm" novalidate>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="nome">Nome</label>
+          <div class="input-group">
+            <input type="text" [(ngModel)]="applicant.nmDemandante" id="nome" name="nome" 
+            #nome="ngModel" required class="form-control" 
+            [ngClass]="{ 'is-invalid': f.submitted && nome.invalid }" 
+            placeholder="Username" aria-describedby="inputGroupPrepend">
+            <div *ngIf="f.submitted && nome.invalid" class="invalid-feedback">
+              <div *ngIf="nome.errors.required">Nome é obrigatório!</div>
+          </div>
+          </div>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="password">CPF</label>
+          <input type="text" class="form-control"
+          [(ngModel)]="applicant.cpf" id="password" name="password" 
+          #nome="ngModel" required class="form-control" 
+          [ngClass]="{ 'is-invalid': f.submitted }" 
+          placeholder="Password" aria-describedby="inputGroupPrepend">
+        </div>
+      </div>
+      <div class="form-group ">
+        <label for="email">Email</label>
+        <div class="input-group">
+
+          <div class="input-group">
+            <input type="email" [(ngModel)]="applicant.email" id="email" name="email" 
+            #email="ngModel" required class="form-control" 
+            [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" 
+            placeholder="E-mail" aria-describedby="inputGroupPrepend">
+            <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+              <div *ngIf="email.errors.required">E-mail é obrigatório!</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="exampleFormControlSelect1">Sexo</label>
+          <select class="form-control" id="exampleFormControlSelect1">
+            <option value="M">Masculino</option>
+            <option value="F">Feminino</option>
+            <option value="A">Anônimo</option>
+          </select>
+        </div>
+      <div class="form-group col-md-2">
+        <label for="ddd">DDD</label>
+        <div class="input-group">
+          <input type="text" [(ngModel)]="applicant?.telefones.ddd" id="ddd" name="ddd" 
+          #ddd="ngModel" required class="form-control" 
+          [ngClass]="{ 'is-invalid': f.submitted && ddd.invalid }" 
+          placeholder="(XX)" aria-describedby="inputGroupPrepend">
+          <div *ngIf="f.submitted && ddd.invalid" class="invalid-feedback">
+            <div *ngIf="ddd.errors.required">Telefone é obrigatório!</div>
+        </div>
+        </div>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="telefone">Telefone</label>
+        <div class="input-group">
+          <input type="text" [(ngModel)]="applicant.telefones.telefone" id="telefone" name="telefone" 
+          #telefone="ngModel" required class="form-control" 
+          [ngClass]="{ 'is-invalid': f.submitted && telefone.invalid }" 
+          placeholder="(XXXX-XXXX)" aria-describedby="inputGroupPrepend">
+          <div *ngIf="f.submitted && telefone.invalid" class="invalid-feedback">
+            <div *ngIf="telefone.errors.required">Telefone é obrigatório!</div>
+          </div>
+        </div>
+      </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputEstado">Estado</label>
+          <select id="inputEstado" class="form-control" 
+          (change)="changeState($event.target.value)">
+            <option selected>Selecione...</option>
+            <option *ngFor="let state of allStates" 
+            [value]="state.name" >
+            {{state.name}}
+            </option>
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputCity">Cidade</label>
+          <select id="inputCidade" class="form-control">
+            <option selected>Selecione...</option>
+            <option *ngFor="let city of cities" 
+            [value]="city.cdCidade">
+            {{city}}
+            </option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="submit" 
+    style="background-color: rgb(48, 48, 48);" 
+    class="btn btn-dark" (click)="saveApplicants(f)" (click)="modal.close('Close click')">Cadastrar</button>
+    <button type="button" 
+    style="background-color: rgb(48, 48, 48);"
+    class="btn btn-dark" (click)="cleanForm(f)" (click)="modal.close('Close click')">Fechar</button>
+    <!-- <button type="button" 
+    style="background-color: rgb(146, 61, 31);"
+    class="btn btn-dark" (click)="modal.close('Close click')">Fechar</button> -->
+  </div>
+  </div>
+</ng-template>
+
+
